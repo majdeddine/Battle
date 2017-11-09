@@ -1,9 +1,11 @@
-<p>Player 1: <%= @player1 %></p>
 <p>
-        Player 2: <%= @player2 %> 100 HP 
-        <form method='post' action='/update'>
-                <input type='hidden' value='<%= @player2 %> attacked <%= @player1 %>' name='new_status'></input>
-                <button type='submit'>ATTACK <%= @player1.upcase %>!</button>
-        </form>
+Player 1: <%= @player1.name %> <%= @player1.hp %> HP
 </p>
-<p><%= @status %></p
+<p>
+Player 2: <%= @player2.name %> <%= @player2.hp %> HP
+<form method="post" action="/p1_attacked">
+        <input type="hidden" name="status" value="<%= @player2.name%> attacks!"> 
+        <button type="submit">ATTACK <%= @player1.name.upcase %>!</button>
+</form>
+</p>
+<p><%= @status %></p>

@@ -8,8 +8,9 @@ class Battle < Sinatra::Base
     erb :index
   end
 
-  post '/update' do
-    session[:status] = params[:new_status]
+  post '/p1_attacked' do
+    $player1.attacked
+    session[:status] = params[:status]
     redirect '/play'
   end
 
@@ -20,8 +21,8 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player1 = $player1.name
-    @player2 = $player2.name
+    @player1 = $player1
+    @player2 = $player2
     @status = session[:status] || 'Battle starting!'
     erb :play
   end

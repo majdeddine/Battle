@@ -3,6 +3,6 @@ feature 'attacking other players' do
     sign_in_and_play
     click_button('ATTACK MAJD!')
 
-    expect(page).to have_text('Peter attacked Majd')
+    expect(page).to have_text('Peter attacks!')
   end
 end
