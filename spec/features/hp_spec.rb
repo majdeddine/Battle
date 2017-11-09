@@ -6,8 +6,8 @@ feature 'see player 2 hit points' do
 
   scenario "Changes HP by 10 when attacking" do
     sign_in_and_play
-    click_button('ATTACK MAJD!')
+    click_button('ATTACK!')
 
-    expect(page).to have_text("Majd 90 HP")
+    expect(page).to have_text("Peter 90 HP")
   end
 end

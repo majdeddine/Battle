@@ -1,10 +1,11 @@
 require './lib/player'
 
 class Game
-  attr_reader :players
+  attr_reader :players, :turn
 
   def initialize(*names, player_class: Player)
     @players = names.map { |n| player_class.new(n) }
+    @turn = 0
     @player = player_class
   end
 
@@ -16,7 +17,21 @@ class Game
     get(index).send(attribute)
   end
 
-  def attack(index)
-    get(index).attacked
+  def attack
+    switch
+    get(turn).attacked
+  end
+
+  def switch
+    @turn = turn == 0 ? 1 : 0
+  end
+
+  def last
+    get(turn - 1)
+  end
+
+  def current
+    get(turn)
   end
 end
+

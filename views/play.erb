@@ -1,11 +1,13 @@
+<p><%= @game.current.name %>'s turn</p>
+
 <p>
 Player 1: <%= @game.getattr(0, :name) %> <%= @game.getattr(0, :hp) %> HP
 </p>
 <p>
 Player 2: <%= @game.getattr(1, :name) %> <%= @game.getattr(1, :hp) %> HP
-<form method="post" action="/p1_attacked">
-        <input type="hidden" name="status" value="<%= @game.getattr(1, :name)%> attacks!">
-        <button type="submit">ATTACK <%= @game.getattr(0, :name).upcase %>!</button>
+<form method="post" action="/attack">
+        <input type="hidden" name="status" value="<%= @game.current.name %> attacks!">
+        <button type="submit">ATTACK!</button>
 </form>
 </p>
 <p><%= @status %></p>
