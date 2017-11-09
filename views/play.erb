@@ -1,11 +1,11 @@
 <p>
-Player 1: <%= @player1.name %> <%= @player1.hp %> HP
+Player 1: <%= @game.getattr(0, :name) %> <%= @game.getattr(0, :hp) %> HP
 </p>
 <p>
-Player 2: <%= @player2.name %> <%= @player2.hp %> HP
+Player 2: <%= @game.getattr(1, :name) %> <%= @game.getattr(1, :hp) %> HP
 <form method="post" action="/p1_attacked">
-        <input type="hidden" name="status" value="<%= @player2.name%> attacks!"> 
-        <button type="submit">ATTACK <%= @player1.name.upcase %>!</button>
+        <input type="hidden" name="status" value="<%= @game.getattr(1, :name)%> attacks!">
+        <button type="submit">ATTACK <%= @game.getattr(0, :name).upcase %>!</button>
 </form>
 </p>
 <p><%= @status %></p>
