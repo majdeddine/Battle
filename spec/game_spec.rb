@@ -2,7 +2,7 @@ require 'game'
 
 describe Game do
   subject { described_class.new('player', 'player', player_class: player_class) }
-  let(:player) { double(:player1, attacked: nil, name: 'majd' ) }
+  let(:player) { double(:player1, attacked: nil, name: 'majd', hp: 100 ) }
   let(:player_class) { double(:player_class, new: player) }
 
   describe '#get' do
@@ -34,7 +34,6 @@ describe Game do
     context 'when it is the first player\'s turn' do
       before(:each) { subject.switch }
       it 'changes to the next player' do
-        p subject
         expect(subject.turn).to eq 1
       end
     end

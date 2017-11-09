@@ -11,3 +11,6 @@ Player 2: <%= @game.getattr(1, :name) %> <%= @game.getattr(1, :hp) %> HP
 </form>
 </p>
 <p><%= @status %></p>
+<% if @game.loser %>
+  <p> <%= @game.loser.name %> Game Over<p>
+<% end %>

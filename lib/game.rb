@@ -1,7 +1,7 @@
 require './lib/player'
 
 class Game
-  attr_reader :players, :turn
+  attr_reader :players, :turn, :loser
 
   def initialize(*names, player_class: Player)
     @players = names.map { |n| player_class.new(n) }
@@ -18,20 +18,21 @@ class Game
   end
 
   def attack
+    return unless loser.nil?
     switch
     get(turn).attacked
+    get_loser
   end
 
   def switch
     @turn = turn == 0 ? 1 : 0
   end
 
-  def last
-    get(turn - 1)
-  end
-
   def current
     get(turn)
   end
-end
 
+  def get_loser
+    players.each { |player| @loser = player if player.hp <= 0 }
+  end
+end
